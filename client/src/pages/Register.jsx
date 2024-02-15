@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { TbSocial } from "react-icons/tb";
 import { CustomButton, Loading, TextInput } from "../components";
 import { RegisterImg } from "../assets";
 
-const Register = () => {
+const Register = () => {  
+
+  const [errMsg, setErrMsg] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -16,11 +22,20 @@ const Register = () => {
     mode: "onChange",
   });
 
-  const onSubmit = async (data) => {};
+  const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    try {
+      const response = await axios.post("http://localhost:3045/users", data);
+      setIsSubmitting(false);
+      navigate("/Login")
+    } catch (error) {
+      console.error("Error:", error);
+      setIsSubmitting(false);
+      setErrMsg("Ooop, something wasn't right!!!");
+    }
+  };
 
-  const [errMsg, setErrMsg] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const dispatch = useDispatch();
+
 
   return (
     <div className='bg-bgColor w-full h-[100vh] flex items-center justify-center p-6'>
