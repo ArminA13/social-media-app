@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { TbSocial } from "react-icons/tb";
 import { CustomButton, Loading, TextInput } from "../components";

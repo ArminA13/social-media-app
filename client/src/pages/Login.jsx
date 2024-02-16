@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Tb3DCubeSphere } from "react-icons/tb";
 import { CustomButton, Loading, TextInput } from "../components";
 import { BgImage } from "../assets";
+import axios from "axios";
 
-const Login = () => {
+const Login = () => {  
+  const [errMsg, setErrMsg] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
+
+
   const {
     register,
     handleSubmit,
@@ -15,11 +20,42 @@ const Login = () => {
     mode: "onChange",
   });
 
-  const onSubmit = async (data) => {};
+  const onSubmit = async (data) => {
+    setIsSubmitting(true); 
+  
+    try {
+      const response = await axios.get(`http://localhost:3045/users?email=${data.email}`);
 
-  const [errMsg, setErrMsg] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const dispatch = useDispatch();
+      const userData = response.data;
+      
+      if (!userData) {
+        setErrMsg({ message: 'Email not found' });
+        return;
+      }
+
+
+      userData.map(user => {
+      if (user.password !== data.password) {
+        setErrMsg({ message: 'Incorrect password' });
+        return;
+      }else{
+        navigate('/home');
+      }
+
+      
+      })
+
+  
+    } catch (error) {
+
+      console.error('Login Error:', error);
+      setErrMsg({ message: 'An error occurred while logging in. Please try again later.' });
+    }
+
+    setIsSubmitting(false);
+  };
+
+
   return (
     <div className='bg-bgColor w-full h-[100vh] flex items-center justify-center p-6'>
       <div className='w-full md:w-2/3 h-fit lg:h-full 2xl:h-5/6 py-8 lg:py-0 flex bg-primary rounded-xl overflow-hidden shadow-xl'>
