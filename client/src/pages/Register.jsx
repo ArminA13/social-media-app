@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { TbSocial } from "react-icons/tb";
+import { Tb3DCubeSphere } from "react-icons/tb";
 import { CustomButton, Loading, TextInput } from "../components";
 import { RegisterImg } from "../assets";
 
@@ -43,7 +43,7 @@ const Register = () => {
         <div className='w-full lg:w-1/2 h-full p-10 2xl:px-20 flex  flex-col justify-center items-center'>
           <div className='w-full flex gap-2 items-center mb-6 justify-center'>
             <div className='p-2 bg-[#26737e] rounded text-white'>
-              <TbSocial />
+              <Tb3DCubeSphere />
             </div>
             <span className='text-2xl text-[#26737e] ' font-semibold>
               SociaApp
@@ -134,8 +134,8 @@ const Register = () => {
               <span
                 className={`text-sm ${
                   errMsg?.status == "failed"
-                    ? "text-[#f64949fe]"
-                    : "text-[#2ba150fe]"
+                  ? "text-[#2ba150fe]"
+                  : "text-[#f64949fe]"
                 } mt-0.5`}
               >
                 {errMsg?.message}

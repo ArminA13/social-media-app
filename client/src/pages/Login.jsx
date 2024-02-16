@@ -114,10 +114,10 @@ const Login = () => {
 
             {errMsg?.message && (
               <span
-                className={`text-sm ${
+                className={`text-sm mb-4 ${
                   errMsg?.status == "failed"
-                    ? "text-[#f64949fe]"
-                    : "text-[#2ba150fe]"
+                    ? "text-[#2ba150fe]"
+                    : "text-[#f64949fe]"
                 } mt-0.5`}
               >
                 {errMsg?.message}
