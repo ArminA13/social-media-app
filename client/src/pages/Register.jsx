@@ -6,6 +6,9 @@ import { Tb3DCubeSphere } from "react-icons/tb";
 import { CustomButton, Loading, TextInput } from "../components";
 import { RegisterImg } from "../assets";
 
+import '../index.css';
+
+
 const Register = () => {  
 
   const [errMsg, setErrMsg] = useState("");
@@ -64,7 +67,7 @@ const Register = () => {
                 label='First Name'
                 placeholder='First Name'
                 type='text'
-                styles='w-full'
+                styles='w-full rounded-full'
                 register={register("firstName", {
                   required: "First Name is required!",
                 })}
@@ -75,7 +78,7 @@ const Register = () => {
                 label='Last Name'
                 placeholder='Last Name'
                 type='lastName'
-                styles='w-full'
+                styles='w-full rounded-full'
                 register={register("lastName", {
                   required: "Last Name do no match",
                 })}
@@ -91,7 +94,7 @@ const Register = () => {
               register={register("email", {
                 required: "Email Address is required",
               })}
-              styles='w-full'
+              styles='w-full rounded-full'
               error={errors.email ? errors.email.message : ""}
             />
 
@@ -101,7 +104,7 @@ const Register = () => {
                 label='Password'
                 placeholder='Password'
                 type='password'
-                styles='w-full'
+                styles='w-full rounded-full'
                 register={register("password", {
                   required: "Password is required!",
                 })}
@@ -112,7 +115,7 @@ const Register = () => {
                 label='Confirm Password'
                 placeholder='Password'
                 type='password'
-                styles='w-full'
+                styles='w-full rounded-full'
                 register={register("cPassword", {
                   validate: (value) => {
                     const { password } = getValues();

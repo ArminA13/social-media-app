@@ -6,6 +6,9 @@ import { CustomButton, Loading, TextInput } from "../components";
 import { BgImage } from "../assets";
 import axios from "axios";
 
+import '../index.css';
+
+
 const Login = () => {  
   const [errMsg, setErrMsg] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,7 +42,7 @@ const Login = () => {
         setErrMsg({ message: 'Incorrect password' });
         return;
       }else{
-        navigate('/home');
+        navigate('/');
       }
 
       
