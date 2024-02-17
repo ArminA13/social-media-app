@@ -2,8 +2,9 @@ import React from "react";
 import ProfilePic from "../images/profile-1.jpg";
 import "./Nav.css";
 import { MdDarkMode } from "react-icons/md";
-import { auth, provider } from "../../../firebase";
-import { signInWithPopup, signOut } from "firebase/auth";
+import { useNavigate } from 'react-router-dom'
+// import { auth, provider } from "../../../firebase";
+// import { signInWithPopup, signOut } from "firebase/auth";
 import { useState } from "react";
 import "../HomePage/HomePage.css";
 
@@ -11,22 +12,25 @@ function Nav(props) {
   const [isAuth, setIsAuth] = useState(false);
   const [text, setText] = useState("LogIn");
 
-  const signInWithGoogle = () => {
-    if (localStorage.isAuth === "false") {
-      signInWithPopup(auth, provider).then(() => {
-        localStorage.setItem("isAuth", true);
-        setIsAuth(true);
-        setText("LogOut");
-      });
-    } else {
-      signOut(auth).then(() => {
-        localStorage.isAuth = false;
-        setIsAuth(false);
-        setText("LogIn");
-      });
-    }
-  };
-
+  // const signInWithGoogle = () => {
+  //   if (localStorage.isAuth === "false") {
+  //     signInWithPopup(auth, provider).then(() => {
+  //       localStorage.setItem("isAuth", true);
+  //       setIsAuth(true);
+  //       setText("LogOut");
+  //     });
+  //   } else {
+  //     signOut(auth).then(() => {
+  //       localStorage.isAuth = false;
+  //       setIsAuth(false);
+  //       setText("LogIn");
+  //     });
+  //   }
+  // };
+  const navigate = useNavigate()
+  const loginNavigate = () => {
+    navigate("/login")
+  }
   const darkMode = () => {
     props.setDarkMode(!props.isDarkMode);
   };
@@ -44,7 +48,7 @@ function Nav(props) {
           <label className="btn btn-primary" htmlFor="create-post">
             Create
           </label>
-          <label className={`create ${isAuth ? "In" : ""}`}>{text}</label>
+          <label className={`create ${isAuth ? "In" : ""}` } onClick={loginNavigate}>{text}</label>
           <div className="profile-photo">
             <img src={ProfilePic} alt="" />
           </div>
