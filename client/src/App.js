@@ -5,7 +5,7 @@ import HomePage from './components/HomePage/HomePage/HomePage'
 
 function App() {
   return (
-    <div data-theme='dark' className="w-full min-h-[100vh] ">
+    <div className="w-full min-h-[100vh] ">
       <Routes>
         <Route path="/" element={<HomePage />}/>
         <Route path="/register" element={<Register />}/>
