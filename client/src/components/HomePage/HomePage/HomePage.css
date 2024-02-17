@@ -97,4 +97,8 @@ main .containere {
   position: relative;
   
 }
+.dark-mode{
+  background-color: #333; 
+}
+
 
