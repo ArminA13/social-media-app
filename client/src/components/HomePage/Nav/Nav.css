@@ -25,6 +25,7 @@ nav {
   position: fixed;
   top: 0;
   z-index: 10;
+  opacity: 0.9;
 }
 
 
@@ -35,10 +36,12 @@ nav .container {
 }
 
 
+
 nav .search-bar {
   background: var(--color-light);
   border-radius: var(--border-radius);
   padding: var(--search-padding); 
+  opacity: 1;
 }
 
 
@@ -69,10 +72,13 @@ nav .LogIn {
   background-color: var(--color-primary);
   border-radius: var(--card-border-radius);
   color: white;
+  opacity: 1;
+  
 }
 
 .create {
   cursor: pointer;
+  opacity: 1;
 }
 
 .create .In {

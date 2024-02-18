@@ -1,7 +1,10 @@
 .middle {
     padding-left: 25%;
+    opacity: 0.9;
 }
-
+.middle *{
+    opacity: 1;
+} 
 
 .middle .stories {
     display: flex;

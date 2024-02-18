@@ -2,9 +2,11 @@
   background-color: white;
   border-radius: var(--card-border-radius);
   width: 300px;
+  opacity: 0.9;
 }
 
 .sidebar h3 {
   padding-left: 10%;
+  opacity: 1;
 }
 
