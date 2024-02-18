@@ -31,6 +31,9 @@ function Nav(props) {
   const loginNavigate = () => {
     navigate("/login")
   }
+  const createNavigate = () => {
+    navigate("/register")
+  }
   const darkMode = () => {
     props.setDarkMode(!props.isDarkMode);
   };
@@ -45,7 +48,7 @@ function Nav(props) {
           <input type="search" placeholder="Search for creators" />
         </div>
         <div className="create">
-          <label className="btn btn-primary" htmlFor="create-post">
+          <label className="btn btn-primary" htmlFor="create-post" onClick={createNavigate}>
             Create
           </label>
           <label className={`create ${isAuth ? "In" : ""}` } onClick={loginNavigate}>{text}</label>
